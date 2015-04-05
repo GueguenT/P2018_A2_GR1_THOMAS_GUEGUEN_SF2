@@ -1,0 +1,32 @@
+{% extends 'layout.html.twig' %}
+
+{% block content  -%}
+    <section class="row center-block">
+            <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <header>
+                    <h2>{{ article.title }}</h2>
+                    <figure>
+                        <img class="img-responsive thumb" src="{{ article.picture }}" alt="picture" title="{{ article.title }}">
+                    </figure>
+                </header>
+                <p>{{ article.content }}</p>
+                <footer>
+                    <span>
+                        <i class="glyphicon glyphicon-triangle-right"></i>
+                        {{ article.category }}
+                    </span>
+                    <span>
+                        <i class="glyphicon glyphicon-plus-sign"></i>
+                        {%  for tag in article.tag %} {{ tag }}, {% endfor %}
+                    </span>
+                    <p id="p_footer">
+                        Released on {{ article.date|date('Y-m-d') }} by {{  article.user }}
+                    </p>
+                </footer>
+            </article>
+
+    </section>
+
+
+
+{% endblock %}

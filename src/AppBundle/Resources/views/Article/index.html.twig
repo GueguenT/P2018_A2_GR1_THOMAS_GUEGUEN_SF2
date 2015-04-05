@@ -1,0 +1,42 @@
+{% extends 'layout.html.twig' %}
+
+{% block content  -%}
+    <section class="row center-block">
+        <h1 class="text-center">
+            Liste des articles
+        </h1>
+        {% for art in article %}
+            <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <header>
+                    <h2><a href="{{ path('article_id', {'id': art.id}) }}">{{ art.title }}</a></h2>
+                    <figure>
+                        <img class="img-responsive thumb" src="{{ art.picture }}" alt="picture" title="{{ art.title }}">
+                        <figcaption>
+                            <p id="p_cat">
+
+                                 {{ art.category }}
+                            </p>
+
+                        </figcaption>
+                    </figure>
+                </header>
+                            <p>
+                                {{ art.content }}
+                            </p>
+                <footer>
+                    {%  for tag in art.tag %}
+                        <div class="btn btn-danger btn-xs">
+                            <span>   {{ tag }}    </span>
+                        </div>
+                    {% endfor %}
+                    <p id="p_footer">
+                        Released on {{ art.date|date('Y-m-d') }} by {{  art.user }}
+                    </p>
+                </footer>
+            </article>
+        {% endfor %}
+    </section>
+
+
+
+{% endblock %}
